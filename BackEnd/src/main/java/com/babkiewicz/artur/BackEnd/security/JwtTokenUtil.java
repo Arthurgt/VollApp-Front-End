@@ -2,6 +2,8 @@ package com.babkiewicz.artur.BackEnd.security;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 
 @Component
 public class JwtTokenUtil implements Serializable {
@@ -63,5 +66,16 @@ public class JwtTokenUtil implements Serializable {
 			expiration = null;
 		}
 		return expiration;
+	}
+	public String generateToken(JwtUser userDetails) {
+		Map<String,Object> claims = new HashMap<String,Object>();
+		claims.put(CLAM_KEY_USERNAME, userDetails.getUsername());
+		return generateToken(claims);
+	}
+	private String generateToken(Map<String, Object> claims) {
+		return Jwts.builder().setClaims(claims).setExpiration(generateExpirationDate()).signWith(SignatureAlgorithm.HS512, secret).compact();
+	}
+	private Date generateExpirationDate() {
+		return new Date(System.currentTimeMillis() + expiration * 1000);
 	}	
 }
