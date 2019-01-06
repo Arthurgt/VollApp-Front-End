@@ -24,7 +24,7 @@ import com.babkiewicz.artur.BackEnd.security.JwtAuthenticationEntryPoint;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(securedEnabled=true, prePostEnabled=true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsService userDetailsService;

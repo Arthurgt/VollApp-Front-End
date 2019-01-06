@@ -10,7 +10,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="users")
+@Table(name="user")
 public class User implements Serializable {
 	private static final long serialVersionUID = -5691837983747283884L;
 	@Id
@@ -26,8 +26,8 @@ public class User implements Serializable {
 	private String email;
 	@Column(name="password")
 	private String password;
-	@Column(name="Role")
-	private String Role;
+	@Column(name="role")
+	private String role;
 	@Column(name="enabled")
 	private boolean enabled;
 	
@@ -39,7 +39,7 @@ public class User implements Serializable {
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
-		this.Role = role;
+		this.role = role;
 		this.enabled = enabled;
 	}
 	public Long getId() {
@@ -73,10 +73,10 @@ public class User implements Serializable {
 		this.password = password;
 	}
 	public String getRole() {
-		return Role;
+		return role;
 	}
 	public void setRole(String Role) {
-		this.Role = Role;
+		this.role = Role;
 	}
 	public boolean isEnabled() {
 		return enabled;
