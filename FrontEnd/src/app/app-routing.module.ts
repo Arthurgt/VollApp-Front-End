@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { UserdashboardComponent } from './userdashboard/userdashboard.component';
 import { AuthGuard } from './authorization/auth.guard';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'admindashboard', component: AdmindashboardComponent, canActivate: [AuthGuard] },
   { path: 'userdashboard', component: UserdashboardComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];
 

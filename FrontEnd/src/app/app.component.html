@@ -4,7 +4,7 @@
     <ul class="navbar-nav mr-auto">
       <a class="nav-link"> VollApp </a>
       <li><a class="nav-link" href="javascript:void(0)" [routerLink]="['/home']" routerLinkActive="active"> Strona główna </a></li>
-      <li><a class="nav-link" href="javascript:void(0)" [routerLink]="['/userdashboard']" routerLinkActive="active" *ngIf="currentstatus.status"> Profil </a></li>
+      <li><a class="nav-link" href="javascript:void(0)" [routerLink]="['/profile']" routerLinkActive="active" *ngIf="currentstatus.status"> Profil </a></li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <a class="nav-link" href="javascript:void(0)" [routerLink]="['/signup']" routerLinkActive="active" *ngIf="!currentstatus.status"> Dołącz </a>
@@ -15,7 +15,7 @@
 </nav>
 <br/><br/><br/>
 <router-outlet></router-outlet>
-<footer class="py-5 bg-dark">
+<footer class="py-4 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-footer">Artur Babkiewicz 2019</p>
     </div>
