@@ -18,12 +18,12 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	@GetMapping(value="/users")
-	public ResponseEntity<List<User>> getAllUsers(){
+	public ResponseEntity<List<User>> getAllUsers(Principal principal){
 		List<User> users = userService.findAll();
 		return new ResponseEntity<List<User>>(users,HttpStatus.OK);
 	}
 	@GetMapping(value="/getUser")
-	@PreAuthorize("hasRole('USER')")
+	//@PreAuthorize("hasRole('USER')")
 	public ResponseEntity<User> getUser(Principal principal){
 		User user = userService.getUserByEmail(principal.getName());
 		return new ResponseEntity<User>(user,HttpStatus.OK);
