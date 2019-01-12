@@ -31,4 +31,8 @@ public class UserServiceImpl implements UserService {
 	public User getUserByEmail(String email) {
 		return userRepository.findByEmailIgnoreCase(email);
 	}
+	@Override
+	public User update(User user) {
+		return userRepository.save(user);
+	}
 }

@@ -12,6 +12,10 @@ export class UserService {
     const headers = new HttpHeaders({'Acces-Control-Allow-Origin': '*'});
     return this.http.post("http://localhost:8080/registration", user, {headers: headers});
   }
+  updateUser(user: any, token: any): Observable<any>{
+    const headers = new HttpHeaders({'Authorization': 'Bearer ' + token});
+    return this.http.post("http://localhost:8080/updateUser", user, {headers: headers});
+  }
   loginUser(user: any): Observable<any>{
     const headers = new HttpHeaders({'Acces-Control-Allow-Origin': '*'});
     return this.http.post("http://localhost:8080/login", user, {headers: headers});

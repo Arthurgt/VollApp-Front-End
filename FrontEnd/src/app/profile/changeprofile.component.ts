@@ -4,13 +4,14 @@ import { UserService } from '../user/user.service';
 
 @Component({
   selector: 'app-profile',
-  templateUrl: './profile.component.html',
+  templateUrl: './changeprofile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ChangeProfileComponent implements OnInit {
 
   public loginuser: any = {};
   public user: any = {};
+  public clicked: boolean;
 
   constructor(private authService: LoginAuthService, private userService: UserService) { 
     this.authService.isLoggedIn();
@@ -18,9 +19,18 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-      this.userService.getUser(this.loginuser.token).subscribe(user => {
+    this.userService.getUser(this.loginuser.token).subscribe(user => {
       this.user = user;
+      this.clicked = false;
     });
   }
 
+  saveUser(user:any, changeForm:any){
+    this.userService.updateUser(user,this.loginuser.token).subscribe((response) => {
+    if(response) {
+      console.log(response);
+      this.clicked=true;
+    }
+    });  
+  }
 }

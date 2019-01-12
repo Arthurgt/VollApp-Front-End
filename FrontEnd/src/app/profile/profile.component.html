@@ -7,16 +7,18 @@
       </div>
       <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
         <div class="container" style="border-bottom:1px solid black">
-          <h2>Nick : John Doe</h2>
+          <h2>Nick : {{user.nick}}</h2>
         </div>
         <br>
         <ul class="container details">
           <li><span class="glyphicon glyphicon-map-marker one" style="width:50px;">Imię : </span>{{user.firstName}}</li>
           <li><span class="glyphicon glyphicon-new-window one" style="width:50px;">Nazwisko : </span>{{user.lastName}}</li>
           <li><span class="glyphicon glyphicon-envelope one" style="width:50px;">Email : </span>{{user.email}}</li>
-          <li><span class="glyphicon glyphicon-earphone one" style="width:50px;">Telefon : </span></li>
-          <li><span class="glyphicon glyphicon-envelope one" style="width:50px;">Pozycja : </span></li>
-          <li><span class="glyphicon glyphicon-envelope one" style="width:50px;">Opis : </span></li>
+          <li><span class="glyphicon glyphicon-envelope one" style="width:50px;">Drużyna : </span>{{user.team}}</li>
+          <li><span class="glyphicon glyphicon-earphone one" style="width:50px;">Telefon : </span>{{user.phone}}</li>
+          <li><span class="glyphicon glyphicon-envelope one" style="width:50px;">Pozycja : </span>{{user.position}}</li>
+          <li><span class="glyphicon glyphicon-envelope one" style="width:50px;">Opis : </span>{{user.info}}</li>
+          <li><a class="nav-link" href="javascript:void(0)" [routerLink]="['/changeprofile']" routerLinkActive="active"> Zmień profil </a></li>
         </ul>
       </div>
     </div>

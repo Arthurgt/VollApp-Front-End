@@ -9,6 +9,7 @@ import com.babkiewicz.artur.BackEnd.model.User;
 public interface UserService {
 
 	User save(User user);
+	User update(User user);
 	List<User> findAll();
 	User getUserByEmail(String email);
 

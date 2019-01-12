@@ -1,0 +1,38 @@
+<br>
+<div class="container">    
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+        <img src="../assets/images/profile.png" alt="stack photo" class="img" style="width:300px;height:300px;">
+      </div>
+      <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+        <div class="container" style="border-bottom:1px solid black">
+          <h2>Zmień profil</h2>
+        </div>
+        <br>
+        <form #changeForm="ngForm">
+                <div class="form-group">
+                  <label for="nick"> Nick </label>
+                  <input type="text" class="form-control" id="nick" [(ngModel)]="user.nick" name="nick">
+                </div>
+                <div class="form-group">
+                  <label for="phone"> Telefon </label>
+                  <input type="text" class="form-control" id="phone" [(ngModel)]="user.phone" name="phone">
+                </div>
+                <div class="form-group">
+                  <label for="position"> Pozycja </label>
+                  <input type="text" class="form-control" id="position" [(ngModel)]="user.position" name="position">
+                </div>
+                <div class="form-group">
+                    <label for="info"> Opis </label>
+                    <input type="text" class="form-control" id="info" [(ngModel)]="user.info" name="info">
+                  </div>
+                <div class="form-group">
+                    <button *ngIf="clicked" type="button" class="btn btn-primary"> ZAPISANO!  </button>
+                  <button *ngIf="!clicked" type="button" class="btn btn-primary" (click)="saveUser(user)"> Zapisz  </button>  <button type="button" class="btn btn-primary" [routerLink]="['/profile']"> Wróć </button>           
+                </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>

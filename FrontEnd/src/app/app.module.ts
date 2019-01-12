@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './authorization/auth.guard';
 import { LoginAuthService } from './authorization/login-auth.service';
 import { ProfileComponent } from './profile/profile.component';
+import { ChangeProfileComponent } from './profile/changeprofile.component';
+import { TeamComponent } from './team/team.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { ProfileComponent } from './profile/profile.component';
     AdmindashboardComponent,
     UserdashboardComponent,
     SignupComponent,
-    ProfileComponent
+    ProfileComponent,
+    ChangeProfileComponent,
+    TeamComponent
   ],
   imports: [
     BrowserModule,
