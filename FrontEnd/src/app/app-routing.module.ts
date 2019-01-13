@@ -9,6 +9,8 @@ import { AuthGuard } from './authorization/auth.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { ChangeProfileComponent } from './profile/changeprofile.component';
 import { TeamComponent } from './team/team.component';
+import { CreateTeamComponent } from './team/createteam.component';
+import { FindTeamComponent } from './team/findteam.component';
 
 
 const routes: Routes = [
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'changeprofile', component: ChangeProfileComponent, canActivate: [AuthGuard] },
   { path: 'team', component: TeamComponent, canActivate: [AuthGuard] },
+  { path: 'createteam', component: CreateTeamComponent, canActivate: [AuthGuard] },
+  { path: 'findteam', component: FindTeamComponent, canActivate: [AuthGuard]},
   { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];
 

@@ -3,7 +3,7 @@ import { LoginAuthService } from '../authorization/login-auth.service';
 import { UserService } from '../user/user.service';
 
 @Component({
-  selector: 'app-profile',
+  selector: 'app-changeprofile',
   templateUrl: './changeprofile.component.html',
   styleUrls: ['./profile.component.css']
 })

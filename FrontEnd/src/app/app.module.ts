@@ -16,6 +16,8 @@ import { LoginAuthService } from './authorization/login-auth.service';
 import { ProfileComponent } from './profile/profile.component';
 import { ChangeProfileComponent } from './profile/changeprofile.component';
 import { TeamComponent } from './team/team.component';
+import { CreateTeamComponent } from './team/createteam.component';
+import { FindTeamComponent } from './team/findteam.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { TeamComponent } from './team/team.component';
     SignupComponent,
     ProfileComponent,
     ChangeProfileComponent,
-    TeamComponent
+    TeamComponent,
+    CreateTeamComponent,
+    FindTeamComponent
   ],
   imports: [
     BrowserModule,

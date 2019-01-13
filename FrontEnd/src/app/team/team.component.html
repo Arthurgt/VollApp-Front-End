@@ -8,18 +8,19 @@
       <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
         <div class="container" style="border-bottom:1px solid black">
           <h2 *ngIf="!user.team">Brak drużyny</h2>
+          <h2 *ngIf="user.team">Drużyna : </h2>
+        </div>
           <p *ngIf="!user.team" class="card-text"> Aby grać musisz mieć drużynę.<br> 
                                                   Możesz dołączyć do istniejącej już drużyny <br>
                                                   za pozwoleniem jej kapitana. <br>
                                                   Ewentualnie możesz założyć własną drużynę<br>
                                                   automatycznie stając się jej kapitanem.<br>
-                                                  Wybierz:</p>
+                                                  Wybierz:</p>                                      
           <ul class="container details">
           <li><a *ngIf="!user.team" href="javascript:void(0)" [routerLink]="['/findteam']" routerLinkActive="active"> Znajdź drużynę </a></li>
           <li><a *ngIf="!user.team" href="javascript:void(0)" [routerLink]="['/createteam']" routerLinkActive="active"> Załóż drużynę </a></li>
-          </ul>
-          <h2 *ngIf="user.team">Team : </h2>
-        </div>
+          <br><br><br>
+          </ul>      
         <br>
       </div>
     </div>

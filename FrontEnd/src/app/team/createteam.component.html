@@ -1,0 +1,32 @@
+<br>
+<div class="container">    
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+          <img src="../assets/images/team.png" alt="stack photo" class="img" style="width:300px;height:210px;">
+        </div>
+        <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+          <div class="container" style="border-bottom:1px solid black">
+            <h2 *ngIf="user.team">Już należysz do drużyny!</h2>
+            <h2 *ngIf="!user.team">Stwórz drużynę</h2>
+          </div>
+          <br>
+          <form *ngIf="!user.team" #teamForm="ngForm">
+                  <div class="form-group">
+                    <label for="name"> Nazwa </label>
+                    <input type="text" class="form-control" id="name" [(ngModel)]="team.name" name="name">
+                  </div>
+                  <div class="form-group">
+                    <label for="info"> Opis </label>
+                    <input type="text" class="form-control" id="info" [(ngModel)]="team.info" name="info">
+                  </div>
+                  <div class="form-group">
+                    <button *ngIf="clicked" type="button" class="btn btn-primary"> UTWORZONO!  </button>
+                    <button *ngIf="!clicked" type="button" class="btn btn-primary" (click)="saveUser(user)"> Zapisz  </button>  <button type="button" class="btn btn-primary" [routerLink]="['/team']"> Wróć </button>           
+                  </div>
+            </form>
+            <br><br>
+        </div>
+      </div>
+    </div>
+  </div>
