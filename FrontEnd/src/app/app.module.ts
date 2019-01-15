@@ -23,6 +23,9 @@ import { TeamRequestComponent } from './team/teamrequest.component';
 import { TeamRequestRefreshComponent } from './team/teamrequestrefresh.component';
 import { TeamPlayerRefreshComponent } from './team/teamplayerrefresh.component';
 import { CaptainRefuseComponent } from './team/captainrefuse.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { MatchComponent } from './match/match.component';
+import { StatisticComponent } from './statistic/statistic.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { CaptainRefuseComponent } from './team/captainrefuse.component';
     TeamRequestComponent,
     TeamPlayerRefreshComponent,
     TeamRequestRefreshComponent,
-    CaptainRefuseComponent
+    CaptainRefuseComponent,
+    CalendarComponent,
+    MatchComponent,
+    StatisticComponent,
   ],
   imports: [
     BrowserModule,

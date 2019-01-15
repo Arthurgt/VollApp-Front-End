@@ -15,6 +15,9 @@ import { TeamRequestComponent } from './team/teamrequest.component';
 import { TeamRequestRefreshComponent } from './team/teamrequestrefresh.component';
 import { TeamPlayerRefreshComponent } from './team/teamplayerrefresh.component';
 import { CaptainRefuseComponent } from './team/captainrefuse.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { MatchComponent } from './match/match.component';
+import { StatisticComponent } from './statistic/statistic.component';
 
 
 
@@ -33,6 +36,9 @@ const routes: Routes = [
   { path: 'teamrequestrefresh/:id', component: TeamRequestRefreshComponent, canActivate: [AuthGuard]},
   { path: 'teamplayerrefresh/:id', component: TeamPlayerRefreshComponent, canActivate: [AuthGuard]},
   { path: 'captainrefuse/:id', component: CaptainRefuseComponent, canActivate: [AuthGuard]},
+  { path: 'calendar', component: CalendarComponent, canActivate: [AuthGuard]},
+  { path: 'match', component: MatchComponent, canActivate: [AuthGuard]},
+  { path: 'statistic', component: StatisticComponent, canActivate: [AuthGuard]},
   { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];
 
