@@ -1,1 +1,32 @@
-FindTeamWorks! 
+<br>
+<div class="container">    
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+          <img src="../assets/images/team.png" alt="stack photo" class="img" style="width:300px;height:210px;">
+        </div>
+        <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+          <div class="container" style="border-bottom:1px solid black">
+            <h2 *ngIf="!user.team">Znajdź swoją drużynę i wyślij zapytanie o dołączenie!</h2>
+          </div>
+            <br><br>
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Nazwa</th>
+                    <th scope="col">Info</th>
+                    <th scope="col">Szczegóły</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor = "let team of teams">
+                    <td>{{team.name}}</td>
+                    <td>{{team.info}}</td>                   
+                    <td> <button type="button" class="btn btn-primary" [routerLink]="['/anotherteam/'+team.id]"> Profil </button> </td>
+                  </tr>
+                </tbody>
+              </table>
+              <button type="button" class="btn btn-primary" [routerLink]="['/team']"> Wróć </button>        
+      </div>
+    </div>
+  </div>

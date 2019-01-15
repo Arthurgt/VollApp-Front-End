@@ -24,12 +24,7 @@ export class LoginComponent implements OnInit {
     if(response) {
       if(response.token){
         localStorage.setItem('currentUser', JSON.stringify(response));
-        if(response.user.role === 'ADMIN') {
           this.router.navigate(['/profile']);
-        }
-        else if (response.user.role === 'USER') {
-          this.router.navigate(['/profile']);
-        }
       }
     }
     });  

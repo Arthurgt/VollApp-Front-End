@@ -20,6 +20,7 @@ export class SignupComponent implements OnInit {
 
   saveUser(user:any, userForm:any){
     user.enabled = true;
+    user.role = 'USER';
     this.userService.saveUser(user).subscribe((response) => {
     if(response) {
       console.log(response);

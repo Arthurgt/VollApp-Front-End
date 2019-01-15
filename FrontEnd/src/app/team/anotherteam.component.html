@@ -1,0 +1,48 @@
+<br>
+<div class="container">    
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+        <img src="../assets/images/team.png" alt="stack photo" class="img" style="width:300px;height:210px;">
+      </div>
+      <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+        <div class="container" style="border-bottom:1px solid black">
+          <h2>Drużyna : {{team.name}} </h2>
+        </div>
+        <ul class="container details">
+          <li><span class="glyphicon glyphicon-map-marker one" style="width:50px;">Info : {{team.info}} </span></li>
+          <li><span class="glyphicon glyphicon-map-marker one" style="width:50px;">Gracze :  </span></li>
+        </ul>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Nick</th>
+              <th scope="col">Imię</th>
+              <th scope="col">Nazwisko</th>
+              <th scope="col">Telefon</th>
+              <th scope="col">Pozycja</th>
+              <th scope="col">Opis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor = "let player of players">
+              <td>{{player.nick}}<a *ngIf="player.captain"> (C)</a></td>
+              <td>{{player.firstName}}</td>
+              <td>{{player.lastName}}</td>
+              <td>{{player.phone}}</td>
+              <td>{{player.position}}</td>
+              <td>{{player.info}}</td>
+            </tr>
+          </tbody>
+        </table>                              
+          <ul class="container details">
+          <li><button *ngIf="!user.team && !clicked" type="button" class="btn btn-primary" (click)="joinTeam()"> Prośba </button></li>
+          <li><button *ngIf="!user.team && clicked" type="button" class="btn btn-primary"> Wysłano prośbę </button></li>
+          <li><button *ngIf="!user.team" type="button" class="btn btn-primary" [routerLink]="['/findteam']"> Wróć </button> </li>
+          <br><br><br>
+          </ul>      
+        <br>
+      </div>
+    </div>
+  </div>
+</div>

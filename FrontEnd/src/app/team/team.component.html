@@ -8,8 +8,13 @@
       <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
         <div class="container" style="border-bottom:1px solid black">
           <h2 *ngIf="!user.team">Brak drużyny</h2>
-          <h2 *ngIf="user.team">Drużyna : </h2>
+          <h2 *ngIf="user.team && user.captain === '1'">Witaj kapitanie !</h2>
+          <h2 *ngIf="user.team">Drużyna : {{user.team.name}}</h2>
         </div>
+        <ul *ngIf="user.team" class="container details">
+          <li><span class="glyphicon glyphicon-map-marker one" style="width:50px;">Info : </span>{{user.team.info}}</li>
+        </ul>
+        <br><br><br>
           <p *ngIf="!user.team" class="card-text"> Aby grać musisz mieć drużynę.<br> 
                                                   Możesz dołączyć do istniejącej już drużyny <br>
                                                   za pozwoleniem jej kapitana. <br>
@@ -19,6 +24,9 @@
           <ul class="container details">
           <li><a *ngIf="!user.team" href="javascript:void(0)" [routerLink]="['/findteam']" routerLinkActive="active"> Znajdź drużynę </a></li>
           <li><a *ngIf="!user.team" href="javascript:void(0)" [routerLink]="['/createteam']" routerLinkActive="active"> Załóż drużynę </a></li>
+          <button *ngIf="user.team"type="button" class="btn btn-primary" [routerLink]="['/playerlist/'+user.team.id]"> Zawodnicy </button>
+          <button *ngIf="user.team && user.captain === '1'"type="button" class="btn btn-primary" [routerLink]="['/teamrequest/'+user.team.id]"> Prośby o dołączenie </button>
+          <button *ngIf="user.team" type="button" class="btn btn-primary" [routerLink]="['/team']" (click)="leaveTeam(user)"> Opuść drużynę </button>
           <br><br><br>
           </ul>      
         <br>

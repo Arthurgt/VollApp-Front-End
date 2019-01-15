@@ -8,6 +8,12 @@
         <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
           <div class="container" style="border-bottom:1px solid black">
             <h2 *ngIf="user.team">Już należysz do drużyny!</h2>
+            <p *ngIf="user.team" class="card-text"> Jeżeli chcesz stworzyć nową drużynę<br> 
+              opuść swoją obecną <br>
+              a następnie wybierz opcję <br>
+              stwórz drużynę.<br>
+              <br *ngIf="user.team"><br *ngIf="user.team">
+            <button *ngIf="user.team" type="button" class="btn btn-primary" [routerLink]="['/team']"> Wróć </button>          
             <h2 *ngIf="!user.team">Stwórz drużynę</h2>
           </div>
           <br>
@@ -22,7 +28,7 @@
                   </div>
                   <div class="form-group">
                     <button *ngIf="clicked" type="button" class="btn btn-primary"> UTWORZONO!  </button>
-                    <button *ngIf="!clicked" type="button" class="btn btn-primary" (click)="saveUser(user)"> Zapisz  </button>  <button type="button" class="btn btn-primary" [routerLink]="['/team']"> Wróć </button>           
+                    <button *ngIf="!clicked" type="button" class="btn btn-primary" (click)="saveTeam(user,team,teamForm)"> Zapisz  </button>  <button type="button" class="btn btn-primary" [routerLink]="['/team']"> Wróć </button>           
                   </div>
             </form>
             <br><br>

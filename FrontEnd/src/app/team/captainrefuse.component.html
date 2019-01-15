@@ -1,0 +1,41 @@
+<br>
+<div class="container">    
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+          <img src="../assets/images/team.png" alt="stack photo" class="img" style="width:300px;height:210px;">
+        </div>
+        <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+          <div class="container" style="border-bottom:1px solid black">
+            <h2>Oddaj kapitana zanim opuścisz drużynę : </h2>
+          </div>
+            <br><br>
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Nick</th>
+                    <th scope="col">Imię</th>
+                    <th scope="col">Nazwisko</th>
+                    <th scope="col">Telefon</th>
+                    <th scope="col">Pozycja</th>
+                    <th scope="col">Opis</th>
+                    <th scope="col">Wybór</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor = "let player of players">
+                    <td *ngIf="!(player.captain === '1')">{{player.nick}}</td>
+                    <td *ngIf="!(player.captain === '1')">{{player.firstName}}</td>
+                    <td *ngIf="!(player.captain === '1')">{{player.lastName}}</td>
+                    <td *ngIf="!(player.captain === '1')">{{player.phone}}</td>
+                    <td *ngIf="!(player.captain === '1')">{{player.position}}</td>
+                    <td *ngIf="!(player.captain === '1')">{{player.info}}</td>
+                    <td *ngIf="!(player.captain === '1')"> <button type="button" class="btn btn-primary" (click)="refuse(player)" [routerLink]="['/home']"> Oddaj Kapitana </button> </td>
+                  </tr>
+                </tbody>
+              </table>
+              <button type="button" class="btn btn-primary" [routerLink]="['/team']"> Wróć </button>
+              <button *ngIf="players.length === 1" type="button" class="btn btn-primary" [routerLink]="['/home']" (click)="leaveTeam()"> Porzuć drużynę </button>         
+      </div>
+    </div>
+  </div>

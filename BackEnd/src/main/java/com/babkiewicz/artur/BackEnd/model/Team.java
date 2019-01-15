@@ -38,14 +38,19 @@ public class Team implements Serializable {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, mappedBy = "team")
     private List<User> players = new ArrayList<User>();
+	@JsonIgnore
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, mappedBy = "team")
+    private List<JoinRequest> requests = new ArrayList<JoinRequest>();
 	
 	public Team() {	
 	}
-	public Team(String name, String info, List<User> players) {
+	public Team(String name, String info, List<User> players, List<JoinRequest> requests) {
 		super();
 		this.name = name;
 		this.info = info;
 		this.players = players;
+		this.requests = requests;
 	}	
 	public Long getId() {
 		return id;
@@ -70,5 +75,22 @@ public class Team implements Serializable {
 	}
 	public void setPlayers(List<User> players) {
 		this.players = players;
+	}
+	public void addPlayer(User user) {
+		this.players.add(user);
+	}
+	public void removePlayer(User user) {
+		for(int i=0; i < this.players.size();i++) {
+			if(this.players.get(i).getId()==user.getId()) {
+				this.players.remove(i);
+				break;
+			}
+		}
+	}
+	public List<JoinRequest> getRequests() {
+		return requests;
+	}
+	public void setRequests(List<JoinRequest> requests) {
+		this.requests = requests;
 	}
 }
