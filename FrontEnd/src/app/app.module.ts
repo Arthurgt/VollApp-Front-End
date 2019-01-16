@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { UserService } from './user/user.service';
+import { MatchService } from './match/match.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './authorization/auth.guard';
 import { LoginAuthService } from './authorization/login-auth.service';
@@ -25,7 +26,14 @@ import { TeamPlayerRefreshComponent } from './team/teamplayerrefresh.component';
 import { CaptainRefuseComponent } from './team/captainrefuse.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { MatchComponent } from './match/match.component';
-import { StatisticComponent } from './statistic/statistic.component';
+import { AddMatchComponent } from './match/addMatch.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'
+import { MatchesComponent } from './match/matches.component';
+import { OperationComponent } from './match/operation.component';
+import { PlayRequestsComponent } from './calendar/playrequests.component';
+import { CalendarRefreshComponent } from './calendar/calendarrefresh.component';
+
+
 
 @NgModule({
   declarations: [
@@ -46,15 +54,20 @@ import { StatisticComponent } from './statistic/statistic.component';
     CaptainRefuseComponent,
     CalendarComponent,
     MatchComponent,
-    StatisticComponent,
+    AddMatchComponent,
+    MatchesComponent,
+    OperationComponent,
+    PlayRequestsComponent,
+    CalendarRefreshComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BsDatepickerModule.forRoot()
   ],
-  providers: [UserService,AuthGuard,LoginAuthService,TeamService],
+  providers: [UserService,AuthGuard,LoginAuthService,TeamService,MatchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

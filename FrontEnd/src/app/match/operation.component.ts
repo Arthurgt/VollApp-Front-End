@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginAuthService } from '../authorization/login-auth.service';
 import { UserService } from '../user/user.service';
+import { ActivatedRoute } from "@angular/router";
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-match',
-  templateUrl: './match.component.html',
+  selector: 'app-operation',
+  templateUrl: './operation.component.html',
   styleUrls: ['./match.component.css']
 })
-export class MatchComponent implements OnInit {
+export class OperationComponent implements OnInit {
 
   public loginuser: any = {};
   public user: any = {};
+  public id: any = {};
 
-  constructor(private authService: LoginAuthService, private userService: UserService) { 
+  constructor(private authService: LoginAuthService, private userService: UserService, private route: ActivatedRoute, private router: Router) { 
     this.authService.isLoggedIn();
     this.loginuser = JSON.parse(localStorage.getItem('currentUser'));
   }
@@ -22,5 +25,4 @@ export class MatchComponent implements OnInit {
       this.user = user;
     });
   }
-
 }

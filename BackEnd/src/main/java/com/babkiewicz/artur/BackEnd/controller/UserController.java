@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.babkiewicz.artur.BackEnd.domain.Response;
 import com.babkiewicz.artur.BackEnd.model.JoinRequest;
 import com.babkiewicz.artur.BackEnd.model.User;
-import com.babkiewicz.artur.BackEnd.service.RequestService;
+import com.babkiewicz.artur.BackEnd.service.JoinRequestService;
 import com.babkiewicz.artur.BackEnd.service.UserService;
 
 @RestController
@@ -27,7 +27,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	@Autowired
-	private RequestService requestService;
+	private JoinRequestService requestService;
 	
 	@GetMapping(value="/users")
 	//@PreAuthorize("hasRole('USER')")

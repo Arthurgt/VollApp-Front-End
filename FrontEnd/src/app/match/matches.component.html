@@ -1,0 +1,42 @@
+<br>
+<div class="container">    
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+            <img src="../assets/images/match.png" alt="stack photo" class="img" style="width:300px;height:210px;">
+        </div>
+        <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+          <div class="container" style="border-bottom:1px solid black">
+            <h2>Dostępne wyzwania:</h2>
+          </div>
+            <br><br>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Nazwa Boiska</th>
+                        <th scope="col">Miasto</th>
+                        <th scope="col">Ulica</th>
+                        <th scope="col">Numer</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Godzina</th>
+                        <th scope="col">Rzuca Wyzwanie</th>
+                        <th scope="col">Prośba</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor = "let match of matches">
+                        <td>{{match.court}}</td>
+                        <td>{{match.city}}</td>
+                        <td>{{match.street}}</td>
+                        <td>{{match.nr}}</td>
+                        <td>{{match.match_date}}</td>
+                        <td>{{match.hour}}:{{match.minute}}</td>
+                        <td>{{match.team1.name}}</td>
+                        <td *ngIf="!(match.team1.id === user.team.id)"> <button type="button" class="btn btn-primary" (click)="saveMatchRequest(match.id)" [routerLink]="['/operation']"> Prośba o przyjęcie </button> </td>
+                    </tr>
+                </tbody>
+        </table>
+            <button type="button" class="btn btn-primary" [routerLink]="['/match']"> Wróć </button>        
+      </div>
+    </div>
+  </div>

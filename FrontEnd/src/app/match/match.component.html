@@ -7,8 +7,13 @@
       </div>
       <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
         <div class="container" style="border-bottom:1px solid black">
-          <h2> Stwórz lub przyjmij wyzwanie : </h2>
+          <h2> Wyzwania : </h2>
         </div>
+        <p *ngIf="!(user.captain === '1')"> Aby rzucić lub przyjąć wyzwanie innym drużynom musisz być kapitanem drużyny.</p>
+        <p *ngIf="user.captain === '1'"> Rzuć lub przyjmij wyzwanie od innych drużyn kapitanie!</p>
+        <br><br><br><br>
+        <button *ngIf="user.team && user.captain === '1'"type="button" class="btn btn-primary" [routerLink]="['/addmatch']"> Rzuć wyzwanie </button>
+        <button type="button" class="btn btn-primary" [routerLink]="['/matches']"> Zobacz wyzwania </button>
       </div>
     </div>
   </div>

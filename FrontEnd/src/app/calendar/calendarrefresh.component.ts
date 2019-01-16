@@ -3,11 +3,11 @@ import { LoginAuthService } from '../authorization/login-auth.service';
 import { UserService } from '../user/user.service';
 
 @Component({
-  selector: 'app-calendar',
-  templateUrl: './statistic.component.html',
-  styleUrls: ['./statistic.component.css']
+  selector: 'app-calendarrefresh',
+  templateUrl: './calendarrefresh.component.html',
+  styleUrls: ['./calendar.component.css']
 })
-export class StatisticComponent implements OnInit {
+export class CalendarRefreshComponent implements OnInit {
 
   public loginuser: any = {};
   public user: any = {};
@@ -24,4 +24,3 @@ export class StatisticComponent implements OnInit {
   }
 
 }
-

@@ -1,0 +1,40 @@
+<br>
+<div class="container">    
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+            <img src="../assets/images/calendar.png" alt="stack photo" class="img" style="width:270px;height:210px;">
+        </div>
+        <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+          <div class="container" style="border-bottom:1px solid black">
+            <h2>Prośby:</h2>
+          </div>
+            <br><br>
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Miejsce</th>
+                    <th scope="col">Adres</th>
+                    <th scope="col">Czas</th>
+                    <th scope="col">Przeciwnik</th>
+                    <th scope="col">Info</th>
+                    <th scope="col">Dodaj</th>
+                    <th scope="col">Odrzuć</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor = "let request of requests">
+                    <td *ngIf="(request.enabled === 1)">{{request.match.court}}</td>
+                    <td *ngIf="(request.enabled === 1)">{{request.match.city}} ul. {{request.match.street}} {{request.match.nr}}</td>
+                    <td *ngIf="(request.enabled === 1)">{{request.match.date}} o {{request.match.hour}}:{{request.match.minute}}</td>
+                    <td *ngIf="(request.enabled === 1)">{{request.team.name}}</td>
+                    <td *ngIf="(request.enabled === 1)">{{request.team.info}}</td>
+                    <td *ngIf="(request.enabled === 1)"> <button type="button" class="btn btn-primary" [routerLink]="['/calendarrefresh']" (click)="acceptPlayRequest(request.id)"> Dodaj </button> </td>
+                    <td *ngIf="(request.enabled === 1)"> <button type="button" class="btn btn-primary" [routerLink]="['/calendarrefresh']" (click)="deletePlayRequest(request.id)"> Odrzuć </button> </td>
+                  </tr>
+                </tbody>
+              </table>
+              <button type="button" class="btn btn-primary" [routerLink]="['/calendar']"> Wróć </button>        
+      </div>
+    </div>
+  </div>

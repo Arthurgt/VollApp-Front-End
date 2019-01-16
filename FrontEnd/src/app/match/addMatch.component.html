@@ -1,0 +1,73 @@
+<br>
+<div class="container">    
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+        <img src="../assets/images/match.png" alt="stack photo" class="img" style="width:300px;height:210px;">
+      </div>
+      <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+        <div class="container" style="border-bottom:1px solid black">
+          <h2>Rzuć wyzwanie</h2>
+        </div>
+        <br>
+        <form #matchForm="ngForm">
+                <div class="form-group">
+                  <label for="court"> Nazwa boiska </label>
+                  <input type="text" class="form-control" id="court" [(ngModel)]="match.court" name="court">
+                </div>
+                <div class="form-group">
+                    <label for="city"> Miasto </label>
+                    <input type="text" class="form-control" id="city" [(ngModel)]="match.city" name="city">
+                </div>       
+                <div class="form-group">
+                    <label for="street"> Ulica </label>
+                    <input type="text" class="form-control" id="street" [(ngModel)]="match.street" name="street">
+                </div>
+                <div class="form-group">
+                    <label for="nr"> Numer </label>
+                    <input type="text" class="form-control" id="nr" [(ngModel)]="match.nr" name="nr">
+                </div>
+                <div class="form-group">
+                    <label for="match_date">Data Meczu</label>
+                    <input id="match_date" name="match_date" [(ngModel)]="match.match_date" type="date" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <a>Godzina</a>
+                    <select class="form-control" id="hour" [(ngModel)]="match.hour" name="hour">   
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option> 
+                            <option value="13">13</option>  
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>    
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option> 
+                            <option value="23">23</option>
+                    </select>
+                    </div>
+                    <div class="form-group">
+                    <a>Minuta</a>
+                    <select class="form-control" id="minute" [(ngModel)]="match.minute" name="minute">            
+                            <option value="00">00</option>    
+                            <option value="15">15</option>
+                            <option value="30">30</option>
+                            <option value="45">45</option>   
+                    </select>
+                  </div>
+                <div class="form-group">
+                    <button *ngIf="clicked" type="button" class="btn btn-primary"> ZAPISANO!  </button>
+                  <button *ngIf="!clicked" type="button" class="btn btn-primary" (click)="saveMatch(match,matchForm)"> Zapisz  </button>  <button type="button" class="btn btn-primary" [routerLink]="['/match']"> Wróć </button>           
+                </div>
+          </form>        
+      </div>
+    </div>
+  </div>
+</div>

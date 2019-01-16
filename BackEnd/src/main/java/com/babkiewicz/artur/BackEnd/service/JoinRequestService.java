@@ -6,7 +6,7 @@ import com.babkiewicz.artur.BackEnd.model.JoinRequest;
 import com.babkiewicz.artur.BackEnd.model.Team;
 
 
-public interface RequestService {
+public interface JoinRequestService {
 	JoinRequest save(JoinRequest joinrequest);
 	JoinRequest findById(long id);
 	List<JoinRequest> findAll();

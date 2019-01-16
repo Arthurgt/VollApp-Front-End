@@ -22,8 +22,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name="team")
 public class Team implements Serializable {
-
-
 	private static final long serialVersionUID = -8643521868436252674L;
 	@Id
 	@Column(name="id")
@@ -42,15 +40,30 @@ public class Team implements Serializable {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, mappedBy = "team")
     private List<JoinRequest> requests = new ArrayList<JoinRequest>();
+	@JsonIgnore
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, mappedBy = "team1")
+    private List<Match> matchesHome = new ArrayList<Match>();
+	@JsonIgnore
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, mappedBy = "team2")
+    private List<Match> matchesAway = new ArrayList<Match>();
+	@JsonIgnore
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, mappedBy = "team")
+    private List<PlayRequest> playRequests = new ArrayList<PlayRequest>();
 	
 	public Team() {	
 	}
-	public Team(String name, String info, List<User> players, List<JoinRequest> requests) {
+	public Team(String name, String info, List<User> players, List<JoinRequest> requests, List<Match> matchesHome, List<Match> matchesAway, List<PlayRequest> playRequests) {
 		super();
 		this.name = name;
 		this.info = info;
 		this.players = players;
 		this.requests = requests;
+		this.matchesHome = matchesHome;
+		this.matchesAway = matchesAway;
+		this.playRequests = playRequests;
 	}	
 	public Long getId() {
 		return id;
@@ -92,5 +105,23 @@ public class Team implements Serializable {
 	}
 	public void setRequests(List<JoinRequest> requests) {
 		this.requests = requests;
+	}
+	public List<Match> getMatchesHome() {
+		return matchesHome;
+	}
+	public void setMatchesHome(List<Match> matchesHome) {
+		this.matchesHome = matchesHome;
+	}
+	public List<Match> getMatchesAway() {
+		return matchesAway;
+	}
+	public void setMatchesAway(List<Match> matchesAway) {
+		this.matchesAway = matchesAway;
+	}
+	public List<PlayRequest> getPlayRequests() {
+		return playRequests;
+	}
+	public void setPlayRequests(List<PlayRequest> playRequests) {
+		this.playRequests = playRequests;
 	}
 }

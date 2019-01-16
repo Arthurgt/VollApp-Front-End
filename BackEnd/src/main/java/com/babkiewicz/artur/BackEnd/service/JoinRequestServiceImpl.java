@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.babkiewicz.artur.BackEnd.model.JoinRequest;
-import com.babkiewicz.artur.BackEnd.repository.RequestRepository;
+import com.babkiewicz.artur.BackEnd.repository.JoinRequestRepository;
 
 @Service
 @Transactional
-public class RequestServiceImpl implements RequestService {
+public class JoinRequestServiceImpl implements JoinRequestService {
 	@Autowired
-	RequestRepository requestRepository;
+	JoinRequestRepository requestRepository;
 	@Override
 	public JoinRequest save(JoinRequest joinrequest) {
 		return requestRepository.save(joinrequest);

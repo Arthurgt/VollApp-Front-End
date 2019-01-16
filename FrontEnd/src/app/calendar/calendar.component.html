@@ -9,6 +9,13 @@
         <div class="container" style="border-bottom:1px solid black">
           <h2>Kalendarz twojej drużyny : </h2>
         </div>
+        <p *ngIf="!(user.captain === '1')"> Aby akceptować wyzwania od innych drużyn musisz być kapitanem. Możesz zobaczyć terminarz rozgrywek twojej drużyny.</p>
+        <p *ngIf="user.captain === '1'"> Akceptuj albo odrzuć wyzwanie od innej drużyny. Zobacz swój plan rozgrywek.</p>
+        <p *ngIf="!user.team"> Nie należysz do żadnej drużyny. Nie możesz więc przeglądać terminarza.</p>
+        <br><br><br><br>
+        <button *ngIf="user.team && user.captain === '1'"type="button" class="btn btn-primary" [routerLink]="['/playrequests/' + user.team.id]"> Sprawdź prośby </button>
+        <button *ngIf="user.team" type="button" class="btn btn-primary" [routerLink]="['/matchescalendar']"> Zobacz terminarz </button>
+        <button *ngIf="user.team" type="button" class="btn btn-primary" [routerLink]="['/historicalmatches']"> Zobacz mecze </button>
       </div>
     </div>
   </div>

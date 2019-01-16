@@ -17,9 +17,11 @@ import { TeamPlayerRefreshComponent } from './team/teamplayerrefresh.component';
 import { CaptainRefuseComponent } from './team/captainrefuse.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { MatchComponent } from './match/match.component';
-import { StatisticComponent } from './statistic/statistic.component';
-
-
+import { AddMatchComponent } from './match/addMatch.component';
+import { MatchesComponent } from './match/matches.component';
+import { OperationComponent } from './match/operation.component';
+import { PlayRequestsComponent } from './calendar/playrequests.component';
+import { CalendarRefreshComponent } from './calendar/calendarrefresh.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -38,7 +40,11 @@ const routes: Routes = [
   { path: 'captainrefuse/:id', component: CaptainRefuseComponent, canActivate: [AuthGuard]},
   { path: 'calendar', component: CalendarComponent, canActivate: [AuthGuard]},
   { path: 'match', component: MatchComponent, canActivate: [AuthGuard]},
-  { path: 'statistic', component: StatisticComponent, canActivate: [AuthGuard]},
+  { path: 'addmatch', component: AddMatchComponent, canActivate: [AuthGuard]},
+  { path: 'matches', component: MatchesComponent, canActivate: [AuthGuard]},
+  { path: 'operation', component: OperationComponent, canActivate: [AuthGuard]}, 
+  { path: 'playrequests/:id', component: PlayRequestsComponent, canActivate: [AuthGuard]},
+  { path: 'calendarrefresh', component: CalendarRefreshComponent, canActivate: [AuthGuard]},
   { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];
 
