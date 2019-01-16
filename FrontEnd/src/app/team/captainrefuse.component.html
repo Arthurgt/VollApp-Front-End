@@ -7,10 +7,11 @@
         </div>
         <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
           <div class="container" style="border-bottom:1px solid black">
-            <h2>Oddaj kapitana zanim opuścisz drużynę : </h2>
+            <h2 *ngIf="(user.captain === '1') && (user.team.id == id)">Oddaj kapitana zanim opuścisz drużynę : </h2>
+            <h2 *ngIf="!(user.captain === '1') || !(user.team.id == id)">Zbłądziłeś</h2>
           </div>
             <br><br>
-            <table class="table">
+            <table *ngIf="(user.captain === '1') && (user.team.id == id)" class="table">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">Nick</th>
@@ -34,8 +35,9 @@
                   </tr>
                 </tbody>
               </table>
-              <button type="button" class="btn btn-primary" [routerLink]="['/team']"> Wróć </button>
-              <button *ngIf="players.length === 1" type="button" class="btn btn-primary" [routerLink]="['/home']" (click)="leaveTeam()"> Porzuć drużynę </button>         
+              <button *ngIf="(user.captain === '1') && (user.team.id == id)" type="button" class="btn btn-primary" [routerLink]="['/team']"> Wróć </button>
+              <button *ngIf="players.length === 1 && (user.captain === '1') && (user.team.id == id)" type="button" class="btn btn-primary" [routerLink]="['/home']" (click)="leaveTeam()"> Porzuć drużynę </button>
+              <button *ngIf="!(user.captain === '1') || !(user.team.id == id)" type="button" class="btn btn-primary" [routerLink]="['/team']"> Wróć </button>         
       </div>
     </div>
   </div>

@@ -7,10 +7,11 @@
         </div>
         <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
           <div class="container" style="border-bottom:1px solid black">
-            <h2>Zawodnicy:</h2>
+            <h2 *ngIf="(user.team.id == id)">Zawodnicy:</h2>
+            <h2 *ngIf="!(user.team.id == id)">Zbłądziłeś</h2>
           </div>
             <br><br>
-            <table class="table">
+            <table *ngIf="user.team.id == id" class="table">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">Nick</th>
@@ -19,7 +20,7 @@
                     <th scope="col">Telefon</th>
                     <th scope="col">Pozycja</th>
                     <th scope="col">Opis</th>
-                    <th *ngIf="user.captain === '1'" scope="col">Usuń</th>
+                    <th *ngIf="user.captain === '1' && user.team.id == id" scope="col">Usuń</th>
                   </tr>
                 </thead>
                 <tbody>

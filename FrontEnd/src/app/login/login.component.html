@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="!loginuser">
     <div class="login-container">
         <div id="output"></div>
         <img class="avatar" src="../../assets/images/logo.png" alt="Logo">
@@ -19,3 +19,4 @@
         </div>
     </div>
 </div>
+<h2 *ngIf="loginuser"> Zbłądziłeś </h2>

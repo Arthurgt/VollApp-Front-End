@@ -7,10 +7,11 @@
         </div>
         <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
           <div class="container" style="border-bottom:1px solid black">
-            <h2>Prośby:</h2>
+            <h2 *ngIf="(user.captain === '1') && (user.team.id == id)">Prośby:</h2>
+            <h2 *ngIf="!(user.captain === '1') || !(user.team.id == id)">Zbłądziłeś</h2>
           </div>
             <br><br>
-            <table class="table">
+            <table class="table" *ngIf="(user.captain === '1') && (user.team.id == id)">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">Miejsce</th>

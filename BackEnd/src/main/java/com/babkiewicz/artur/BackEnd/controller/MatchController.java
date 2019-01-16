@@ -58,4 +58,31 @@ public class MatchController {
 		}
 		return new ResponseEntity<List<Match>>(activeMatches,HttpStatus.OK);
 	}
+	@GetMapping(value="/getmatches/{id}")
+	public ResponseEntity<List<Match>> getMatches(@PathVariable("id") long id){
+		Team team = teamService.findById(id);
+		Date date = new Date();
+		List<Match> matches1 = team.getMatchesAway();
+		List<Match> matches2 = team.getMatchesHome();
+		List<Match> matches3 = new ArrayList<Match>();
+		List<Match> result = new ArrayList<Match>();
+		matches3.addAll(matches1);
+		matches3.addAll(matches2);
+		for(Match match : matches3) {
+			if(match.getStatus().equals("ACTIVE")) {
+				if((match.getDate().before(date))) {
+					match.setStatus("REJECTED");
+					matchService.save(match);
+				}		
+			}
+			else if(match.getStatus().equals("READY")) {
+				if((match.getDate().before(date))) {
+					match.setStatus("PLAYED");
+					matchService.save(match);
+				}	
+			}
+			result.add(match);
+		}
+		return new ResponseEntity<List<Match>>(result,HttpStatus.OK);
+	}
 }

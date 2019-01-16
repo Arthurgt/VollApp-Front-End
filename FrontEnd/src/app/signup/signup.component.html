@@ -1,9 +1,9 @@
-<div class="container">
+<div *ngIf="!loginuser" class="container">
         <div class="login-container">
             <div id="output"></div>
             <img class="avatar" src="../../assets/images/logo.png" alt="Logo">
             <div class="form-box">
-<form #userForm="ngForm">
+<form *ngIf="!loginuser" #userForm="ngForm">
   <div class="form-group">
       <label for="firstName"> Imię </label>
       <input type="text" class="form-control" id="firstName" [(ngModel)]="user.firstName" name="firstName">
@@ -27,4 +27,5 @@
 </div>
 </div>
 </div>
+<h2 *ngIf="loginuser"> Zbłądziłeś </h2>
 

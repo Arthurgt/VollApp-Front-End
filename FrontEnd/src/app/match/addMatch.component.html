@@ -7,10 +7,11 @@
       </div>
       <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
         <div class="container" style="border-bottom:1px solid black">
-          <h2>Rzuć wyzwanie</h2>
+          <h2 *ngIf="(user.captain === '1')">Rzuć wyzwanie</h2>
+          <h2 *ngIf="(user.captain === '0')"> Aby rzucić lub przyjąć wyzwanie innym drużynom musisz być kapitanem drużyny.</h2>
         </div>
         <br>
-        <form #matchForm="ngForm">
+        <form #matchForm="ngForm" *ngIf="(user.captain === '1')">
                 <div class="form-group">
                   <label for="court"> Nazwa boiska </label>
                   <input type="text" class="form-control" id="court" [(ngModel)]="match.court" name="court">
@@ -66,7 +67,8 @@
                     <button *ngIf="clicked" type="button" class="btn btn-primary"> ZAPISANO!  </button>
                   <button *ngIf="!clicked" type="button" class="btn btn-primary" (click)="saveMatch(match,matchForm)"> Zapisz  </button>  <button type="button" class="btn btn-primary" [routerLink]="['/match']"> Wróć </button>           
                 </div>
-          </form>        
+          </form> 
+          <button *ngIf="(user.captain === '0')" type="button" class="btn btn-primary" [routerLink]="['/match']"> Wróć </button>        
       </div>
     </div>
   </div>

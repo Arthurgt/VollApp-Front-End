@@ -22,6 +22,7 @@ import { MatchesComponent } from './match/matches.component';
 import { OperationComponent } from './match/operation.component';
 import { PlayRequestsComponent } from './calendar/playrequests.component';
 import { CalendarRefreshComponent } from './calendar/calendarrefresh.component';
+import { SchedulerComponent } from './calendar/scheduler.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -45,6 +46,7 @@ const routes: Routes = [
   { path: 'operation', component: OperationComponent, canActivate: [AuthGuard]}, 
   { path: 'playrequests/:id', component: PlayRequestsComponent, canActivate: [AuthGuard]},
   { path: 'calendarrefresh', component: CalendarRefreshComponent, canActivate: [AuthGuard]},
+  { path: 'scheduler/:id', component: SchedulerComponent, canActivate: [AuthGuard]},
   { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];
 

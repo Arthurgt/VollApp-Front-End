@@ -32,8 +32,7 @@ import { MatchesComponent } from './match/matches.component';
 import { OperationComponent } from './match/operation.component';
 import { PlayRequestsComponent } from './calendar/playrequests.component';
 import { CalendarRefreshComponent } from './calendar/calendarrefresh.component';
-
-
+import { SchedulerComponent } from './calendar/scheduler.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +57,8 @@ import { CalendarRefreshComponent } from './calendar/calendarrefresh.component';
     MatchesComponent,
     OperationComponent,
     PlayRequestsComponent,
-    CalendarRefreshComponent
+    CalendarRefreshComponent,
+    SchedulerComponent
   ],
   imports: [
     BrowserModule,

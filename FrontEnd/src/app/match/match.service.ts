@@ -36,4 +36,8 @@ export class MatchService {
     const headers = new HttpHeaders({'Authorization': 'Bearer ' + token});
     return this.http.delete("http://localhost:8080/acceptPlayRequest/" + requestId, {headers: headers});
   }
+  getMatches(token: any, teamid:any){
+    const headers = new HttpHeaders({'Authorization': 'Bearer ' + token});
+    return this.http.get("http://localhost:8080/getmatches/" + teamid, {headers: headers});
+  }
 }

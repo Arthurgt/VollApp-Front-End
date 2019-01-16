@@ -1,0 +1,44 @@
+<br>
+<div class="container">    
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+            <img src="../assets/images/calendar.png" alt="stack photo" class="img" style="width:270px;height:210px;">
+        </div>
+        <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+          <div class="container" style="border-bottom:1px solid black">
+            <h2 *ngIf="(user.team.id == id)">Mecze:</h2>
+            <h2 *ngIf="!(user.team.id == id)">Zbłądziłeś</h2>
+          </div>
+            <br><br>
+            <table *ngIf="(user.team.id == id)" class="table">
+                <thead class="thead-dark">
+                  <tr>   
+                    <th scope="col">Data</th>
+                    <th scope="col">Czas</th>
+                    <th scope="col">Miejsce</th>
+                    <th scope="col">Adres</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Gospodarz</th>
+                    <th scope="col">Gość</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor = "let match of matches">       
+                      <td>{{match.date}}</td>
+                      <td>{{match.hour}}:{{match.minute}}</td>
+                      <td>{{match.court}}</td>
+                      <td>{{match.city}} ul.{{match.street}} {{match.nr}}</td>
+                      <td *ngIf="match.status === 'ACTIVE'">Oczekuje rywala</td>
+                      <td *ngIf="match.status === 'READY'">Wkrótce mecz!</td>
+                      <td *ngIf="match.status === 'REJECTED'">Anulowany</td>
+                      <td *ngIf="match.status === 'REJECTED'">Rozegrany</td>
+                      <td>{{match.team1.name}}</td>
+                      <td>{{match.team2.name}}</td>
+                    </tr>
+                </tbody>
+              </table>
+              <button type="button" class="btn btn-primary" [routerLink]="['/calendar']"> Wróć </button>        
+      </div>
+    </div>
+  </div>

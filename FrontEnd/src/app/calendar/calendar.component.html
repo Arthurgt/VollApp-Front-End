@@ -14,8 +14,7 @@
         <p *ngIf="!user.team"> Nie należysz do żadnej drużyny. Nie możesz więc przeglądać terminarza.</p>
         <br><br><br><br>
         <button *ngIf="user.team && user.captain === '1'"type="button" class="btn btn-primary" [routerLink]="['/playrequests/' + user.team.id]"> Sprawdź prośby </button>
-        <button *ngIf="user.team" type="button" class="btn btn-primary" [routerLink]="['/matchescalendar']"> Zobacz terminarz </button>
-        <button *ngIf="user.team" type="button" class="btn btn-primary" [routerLink]="['/historicalmatches']"> Zobacz mecze </button>
+        <button *ngIf="user.team" type="button" class="btn btn-primary" [routerLink]="['/scheduler/'+user.team.id]"> Zobacz mecze </button>
       </div>
     </div>
   </div>

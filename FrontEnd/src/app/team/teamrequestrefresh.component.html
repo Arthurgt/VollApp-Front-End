@@ -7,10 +7,12 @@
         </div>
         <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
           <div class="container" style="border-bottom:1px solid black">
-            <h2>Operacja wykonana pomyślnie!</h2>
+            <h2 *ngIf="(user.captain === '1') && (user.team.id == id)">Operacja wykonana pomyślnie!</h2>
+            <h2 *ngIf="!(user.captain === '1') || !(user.team.id == id)">Zbłądziłeś</h2>
           </div>
             <br><br>
-              <button type="button" class="btn btn-primary" [routerLink]="['/teamrequest/'+id]"> Wróć </button>        
+              <button *ngIf="(user.captain === '1') && (user.team.id == id)" type="button" class="btn btn-primary" [routerLink]="['/teamrequest/'+id]"> Wróć </button>  
+              <button *ngIf="!(user.captain === '1') || !(user.team.id == id)" type="button" class="btn btn-primary" [routerLink]="['/team']"> Wróć </button>       
       </div>
     </div>
   </div>

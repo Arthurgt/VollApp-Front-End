@@ -11,7 +11,7 @@
             <p *ngIf="user.team" class="card-text"> Jeżeli chcesz stworzyć nową drużynę<br> 
               opuść swoją obecną <br>
               a następnie wybierz opcję <br>
-              stwórz drużynę.<br>
+              stwórz drużynę.<br></p>
               <br *ngIf="user.team"><br *ngIf="user.team">
             <button *ngIf="user.team" type="button" class="btn btn-primary" [routerLink]="['/team']"> Wróć </button>          
             <h2 *ngIf="!user.team">Stwórz drużynę</h2>

@@ -10,10 +10,12 @@ import { LoginAuthService } from '../authorization/login-auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  public user : any = {}
+  public user : any = {};
+  public loginuser: any = {};
 
   constructor(private userService: UserService, private router: Router ,private authService: LoginAuthService) {
     this.authService.isLoggedIn();
+    this.loginuser = JSON.parse(localStorage.getItem('currentUser'));
    }
 
   ngOnInit() {
