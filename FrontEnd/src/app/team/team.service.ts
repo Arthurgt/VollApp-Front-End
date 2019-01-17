@@ -31,16 +31,6 @@ export class TeamService {
     return this.http.get("http://localhost:8080/getPlayers/" + id, {headers: headers});
   }
 
-  addPlayer(id: string, token: any, user: any): Observable<any>{
-    const headers = new HttpHeaders({'Authorization': 'Bearer ' + token});
-    return this.http.post("http://localhost:8080/addPlayer/" + id, user, {headers: headers});
-  }
-
-  removePlayer(id: string, token: any, user: any): Observable<any>{
-    const headers = new HttpHeaders({'Authorization': 'Bearer ' + token});
-    return this.http.post("http://localhost:8080/removePlayer/" + id, user, {headers: headers});
-  }
-
   saveTeamRequest(id: string, token: any, user: any): Observable<any>{
     const headers = new HttpHeaders({'Authorization': 'Bearer ' + token});
     return this.http.post("http://localhost:8080/saveJoinRequest/" + id, user.id, {headers: headers});

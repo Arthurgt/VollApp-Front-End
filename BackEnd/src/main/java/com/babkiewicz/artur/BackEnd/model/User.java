@@ -42,8 +42,6 @@ public class User implements Serializable {
 	private String role;
 	@Column(name="nick")
 	private String nick;
-	@Column(name="phone")
-	private String phone;
 	@Column(name="position")
 	private String position;
 	@Column(name="info")
@@ -63,7 +61,7 @@ public class User implements Serializable {
 	
 	public User() {
 	}	
-	public User( String firstName, String lastName, String email, String password, String role, boolean enabled, String info, String nick, String position, String phone, Team team, String captain, List<JoinRequest> requests) {
+	public User( String firstName, String lastName, String email, String password, String role, boolean enabled, String info, String nick, String position, Team team, String captain, List<JoinRequest> requests) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -72,7 +70,6 @@ public class User implements Serializable {
 		this.role = role;
 		this.enabled = enabled;
 		this.nick = nick;
-		this.phone = phone;
 		this.position = position;
 		this.info = info;
 		this.team = team;
@@ -126,12 +123,6 @@ public class User implements Serializable {
 	}
 	public void setNick(String nick) {
 		this.nick = nick;
-	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
 	}
 	public String getPosition() {
 		return position;

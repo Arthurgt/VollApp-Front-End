@@ -26,17 +26,13 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
-	@Autowired
-	private JoinRequestService requestService;
 	
 	@GetMapping(value="/users")
-	//@PreAuthorize("hasRole('USER')")
 	public ResponseEntity<List<User>> getAllUsers(){
 		List<User> users = userService.findAll();
 		return new ResponseEntity<List<User>>(users,HttpStatus.OK);
 	}
 	@GetMapping(value="/getUser")
-	//@PreAuthorize("hasRole('USER')")
 	public ResponseEntity<User> getUser(Principal principal){
 		User user = userService.getUserByEmail(principal.getName());
 		return new ResponseEntity<User>(user,HttpStatus.OK);
@@ -45,17 +41,5 @@ public class UserController {
 	public ResponseEntity<Response> updateUser(@RequestBody User user){
 		User dbUser = userService.update(user);
 		return new ResponseEntity<Response>(new Response("User is updated successfully"), HttpStatus.OK);
-	}
-	@DeleteMapping(value="/deleteAllRequests/{id}")
-	public ResponseEntity<Response> deleteAllUserRequests(@PathVariable("id") long user_id){
-		List<JoinRequest> joinRequests = requestService.findAll();
-		for(JoinRequest request : joinRequests) {
-			if(request.getId().equals(user_id)) {
-			System.out.println(request.getId());
-			request.setEnabled(0);
-			requestService.save(request);
-			}
-		}
-		return new ResponseEntity<Response>(new Response("joinRequest has been updated successfully"), HttpStatus.OK);
 	}
 }

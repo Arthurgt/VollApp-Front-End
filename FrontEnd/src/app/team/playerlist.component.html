@@ -17,7 +17,6 @@
                     <th scope="col">Nick</th>
                     <th scope="col">Imię</th>
                     <th scope="col">Nazwisko</th>
-                    <th scope="col">Telefon</th>
                     <th scope="col">Pozycja</th>
                     <th scope="col">Opis</th>
                     <th *ngIf="user.captain === '1' && user.team.id == id" scope="col">Usuń</th>
@@ -28,7 +27,6 @@
                     <td>{{player.nick}}<a *ngIf="player.captain === '1'"> (C)</a></td>
                     <td>{{player.firstName}}</td>
                     <td>{{player.lastName}}</td>
-                    <td>{{player.phone}}</td>
                     <td>{{player.position}}</td>
                     <td>{{player.info}}</td>
                     <td *ngIf="!(player.captain === '1') && user.captain === '1'"> <button type="button" class="btn btn-primary" (click)="deletePlayer(player)" [routerLink]="['/teamplayerrefresh/'+ id]"> Usuń </button> </td>

@@ -2,30 +2,42 @@
         <div class="login-container">
             <div id="output"></div>
             <img class="avatar" src="../../assets/images/logo.png" alt="Logo">
-            <div class="form-box">
-<form *ngIf="!loginuser" #userForm="ngForm">
-  <div class="form-group">
-      <label for="firstName"> Imię </label>
-      <input type="text" class="form-control" id="firstName" [(ngModel)]="user.firstName" name="firstName">
-  </div>
-  <div class="form-group">
-      <label for="lastName"> Nazwisko </label>
-      <input type="text" class="form-control" id="lastName" [(ngModel)]="user.lastName" name="lastName">
-  </div>
-  <div class="form-group">
-      <label for="email"> Email </label>
-      <input type="text" class="form-control" id="email" [(ngModel)]="user.email" name="email">
-  </div>
-  <div class="form-group">
-      <label for="password"> Hasło </label>
-      <input type="password" class="form-control" id="password" [(ngModel)]="user.password" name="password">
-  </div>
-  <div class="form-group">
-    <button type="button" class="btn btn-primary" (click)="saveUser(user,userForm)"> Dołącz </button>
-  </div>
-</form>
-</div>
-</div>
-</div>
+                <form *ngIf="!loginuser" [formGroup]="registerForm" (ngSubmit)="saveUser(user,registerForm)">
+                    <div class="form-group">
+                        <label>Imię</label>
+                        <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" [(ngModel)]="user.firstName" />
+                        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                            <div *ngIf="f.firstName.errors.required">Błędne imię</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Nazwisko</label>
+                        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" [(ngModel)]="user.lastName" />
+                        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                            <div *ngIf="f.lastName.errors">Błędne nazwisko</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" [(ngModel)]="user.email" />
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors">Błędny email</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Hasło</label>
+                        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" [(ngModel)]="user.password" />
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors">Hasło musi zawierać minimum 6 znaków, jedną literę i jedną cyfrę.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button *ngIf="!clicked" class="btn btn-primary">Zarejestruj</button>         
+                    </div>
+                </form>
+        </div>
+    </div>
 <h2 *ngIf="loginuser"> Zbłądziłeś </h2>
+
+
 

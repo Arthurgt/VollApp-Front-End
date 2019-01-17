@@ -26,9 +26,10 @@ export class LoginComponent implements OnInit {
     if(response) {
       if(response.token){
         localStorage.setItem('currentUser', JSON.stringify(response));
+          alert('UDANE LOGOWANIE');
           this.router.navigate(['/profile']);
-      }
-    }
-    });  
+      }  
+    }   
+    }); 
   }
 }

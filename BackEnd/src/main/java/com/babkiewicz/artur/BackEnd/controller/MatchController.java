@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.babkiewicz.artur.BackEnd.domain.Response;
 import com.babkiewicz.artur.BackEnd.model.Match;
 import com.babkiewicz.artur.BackEnd.model.Team;
+import com.babkiewicz.artur.BackEnd.model.User;
 import com.babkiewicz.artur.BackEnd.service.MatchService;
 import com.babkiewicz.artur.BackEnd.service.TeamService;
+import com.babkiewicz.artur.BackEnd.service.UserService;
 
 @RestController
 public class MatchController {
@@ -27,13 +29,21 @@ public class MatchController {
 	private MatchService matchService;
 	@Autowired
 	private TeamService teamService;
-	
-	@PostMapping(value="/saveMatch/{id}")
-	public ResponseEntity<Response> registration(@PathVariable("id") long id, @RequestBody Match match){
+	@Autowired 
+	private UserService userService;
+
+	@PostMapping(value="/saveMatch/{id}/{sender_id}")
+	public ResponseEntity<Response> registration(@PathVariable("id") long id,@PathVariable("sender_id") long sender_id, @RequestBody Match match){
 		Team team = teamService.findById(id);
+		User user = userService.getUser(sender_id);
+		
+		if(user.getTeam().getId() == team.getId() && user.getCaptain().equals("1")) {
 		match.setTeam1(team);
 		matchService.save(match);
-	    return new ResponseEntity<Response>(new Response("Match is saved successfully"), HttpStatus.OK);
+	    return new ResponseEntity<Response>(new Response("Match is saved successfully"), HttpStatus.OK);}
+		else {
+		return new ResponseEntity<Response>(new Response("Acces denied"), HttpStatus.OK);	
+		}	
 	}
 	@PostMapping(value="/updateMatch")
 	public ResponseEntity<Response> registration(@RequestBody Match match){
@@ -58,17 +68,16 @@ public class MatchController {
 		}
 		return new ResponseEntity<List<Match>>(activeMatches,HttpStatus.OK);
 	}
-	@GetMapping(value="/getmatches/{id}")
-	public ResponseEntity<List<Match>> getMatches(@PathVariable("id") long id){
+	@GetMapping(value="/getmatches/{id}/{sender_id}")
+	public ResponseEntity<List<Match>> getMatches(@PathVariable("id") long id,@PathVariable("sender_id") long sender_id){
 		Team team = teamService.findById(id);
+        User user = userService.getUser(sender_id);	
+		if(user.getTeam().getId() == team.getId()) {
 		Date date = new Date();
-		List<Match> matches1 = team.getMatchesAway();
-		List<Match> matches2 = team.getMatchesHome();
-		List<Match> matches3 = new ArrayList<Match>();
+		List<Match> matchesA = team.getMatchesAway();
+		List<Match> matchesH = team.getMatchesHome();
 		List<Match> result = new ArrayList<Match>();
-		matches3.addAll(matches1);
-		matches3.addAll(matches2);
-		for(Match match : matches3) {
+		for(Match match : matchesA) {
 			if(match.getStatus().equals("ACTIVE")) {
 				if((match.getDate().before(date))) {
 					match.setStatus("REJECTED");
@@ -83,6 +92,25 @@ public class MatchController {
 			}
 			result.add(match);
 		}
-		return new ResponseEntity<List<Match>>(result,HttpStatus.OK);
+		for(Match match : matchesH) {
+			if(match.getStatus().equals("ACTIVE")) {
+				if((match.getDate().before(date))) {
+					match.setStatus("REJECTED");
+					matchService.save(match);
+				}		
+			}
+			else if(match.getStatus().equals("READY")) {
+				if((match.getDate().before(date))) {
+					match.setStatus("PLAYED");
+					matchService.save(match);
+				}	
+			}
+			result.add(match);
+		}
+		return new ResponseEntity<List<Match>>(result,HttpStatus.OK);}
+		else {
+			List<Match> empty = new ArrayList<Match>();
+			return new ResponseEntity<List<Match>>(empty,HttpStatus.OK);
+			}	
 	}
 }

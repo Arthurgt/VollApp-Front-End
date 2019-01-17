@@ -44,8 +44,6 @@ public class Match implements Serializable {
 	private String status;
 	@Column(name="city")
 	private String city;
-	@Column(name="court")
-	private String court;
 	@Column(name="street")
 	private String street;
 	@Column(name="nr")
@@ -65,13 +63,12 @@ public class Match implements Serializable {
 	
 	public Match(){		
 	}
-	public Match(Date match_date, String status, Team team1, Team team2, String court, String city, String street, String nr, String hour, String minute, List<PlayRequest> playRequests) {
+	public Match(Date match_date, String status, Team team1, Team team2, String city, String street, String nr, String hour, String minute, List<PlayRequest> playRequests) {
 		super();
 		this.match_date = match_date;
 		this.status = status;
 		this.team1 = team1;
 		this.team2 = team2;
-		this.court = court;
 		this.city = city;
 		this.street = street;
 		this.nr = nr;
@@ -114,12 +111,6 @@ public class Match implements Serializable {
 	}
 	public void setMatch_date(Date match_date) {
 		this.match_date = match_date;
-	}
-	public String getCourt() {
-		return court;
-	}
-	public void setCourt(String court) {
-		this.court = court;
 	}
 	public String getCity() {
 		return city;

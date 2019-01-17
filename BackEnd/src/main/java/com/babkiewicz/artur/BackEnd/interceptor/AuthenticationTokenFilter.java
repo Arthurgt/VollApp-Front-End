@@ -1,4 +1,4 @@
-package com.babkiewicz.artur.BackEnd.security;
+package com.babkiewicz.artur.BackEnd.interceptor;
 
 import java.io.IOException;
 import javax.servlet.FilterChain;
@@ -13,6 +13,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.filter.OncePerRequestFilter;
+
+import com.babkiewicz.artur.BackEnd.security.JwtTokenUtil;
 
 public class AuthenticationTokenFilter extends OncePerRequestFilter {
 	

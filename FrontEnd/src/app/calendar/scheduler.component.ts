@@ -20,15 +20,17 @@ export class SchedulerComponent implements OnInit {
     this.authService.isLoggedIn();
     this.loginuser = JSON.parse(localStorage.getItem('currentUser'));
     this.id = this.route.snapshot.paramMap.get("id");
+    
   }
 
   ngOnInit() {
     this.userService.getUser(this.loginuser.token).subscribe(user => {
-      this.user = user;
-    });
-    this.matchService.getMatches(this.loginuser.token,this.id).subscribe(matches => {
-        this.matches = matches;
-      });
+      this.user = user;    
+    });   
   }
 
+  show(){
+  this.matchService.getMatches(this.user.id,this.loginuser.token,this.id).subscribe(matches => {
+    this.matches = matches;
+  });}
 }

@@ -8,9 +8,9 @@ export class MatchService {
   constructor(private http: HttpClient) { 
     this.http = http;  
   }
-  saveMatch(id: string, match: any, token: any): Observable<any>{
+  saveMatch(user_id:string, id: string, match: any, token: any): Observable<any>{
     const headers = new HttpHeaders({'Authorization': 'Bearer ' + token});
-    return this.http.post("http://localhost:8080/saveMatch/" + id, match, {headers: headers});
+    return this.http.post("http://localhost:8080/saveMatch/" + id + "/" + user_id, match, {headers: headers});
   }
   updateMatch(match: any, token: any): Observable<any>{
     const headers = new HttpHeaders({'Authorization': 'Bearer ' + token});
@@ -36,8 +36,8 @@ export class MatchService {
     const headers = new HttpHeaders({'Authorization': 'Bearer ' + token});
     return this.http.delete("http://localhost:8080/acceptPlayRequest/" + requestId, {headers: headers});
   }
-  getMatches(token: any, teamid:any){
+  getMatches(sender_id:any ,token: any, teamid:any){
     const headers = new HttpHeaders({'Authorization': 'Bearer ' + token});
-    return this.http.get("http://localhost:8080/getmatches/" + teamid, {headers: headers});
+    return this.http.get("http://localhost:8080/getmatches/" + teamid + "/" + sender_id, {headers: headers});
   }
 }

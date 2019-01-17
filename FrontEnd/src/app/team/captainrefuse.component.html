@@ -17,7 +17,6 @@
                     <th scope="col">Nick</th>
                     <th scope="col">Imię</th>
                     <th scope="col">Nazwisko</th>
-                    <th scope="col">Telefon</th>
                     <th scope="col">Pozycja</th>
                     <th scope="col">Opis</th>
                     <th scope="col">Wybór</th>
@@ -28,7 +27,6 @@
                     <td *ngIf="!(player.captain === '1')">{{player.nick}}</td>
                     <td *ngIf="!(player.captain === '1')">{{player.firstName}}</td>
                     <td *ngIf="!(player.captain === '1')">{{player.lastName}}</td>
-                    <td *ngIf="!(player.captain === '1')">{{player.phone}}</td>
                     <td *ngIf="!(player.captain === '1')">{{player.position}}</td>
                     <td *ngIf="!(player.captain === '1')">{{player.info}}</td>
                     <td *ngIf="!(player.captain === '1')"> <button type="button" class="btn btn-primary" (click)="refuse(player)" [routerLink]="['/home']"> Oddaj Kapitana </button> </td>

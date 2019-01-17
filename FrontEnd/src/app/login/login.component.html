@@ -2,8 +2,7 @@
     <div class="login-container">
         <div id="output"></div>
         <img class="avatar" src="../../assets/images/logo.png" alt="Logo">
-        <div class="form-box">
-            <form #userForm="ngForm">
+        <form #userForm="ngForm">
             <div class="form-group">
                 <label for="email"> Email </label>
                 <input type="text" class="form-control" id="email" [(ngModel)]="user.email" name="email">
@@ -15,8 +14,7 @@
             <div class="form-group">
                 <button type="button" class="btn btn-primary" (click)="loginUser(user)"> Zaloguj </button>
             </div>
-            </form> 
-        </div>
+        </form> 
     </div>
 </div>
 <h2 *ngIf="loginuser"> Zbłądziłeś </h2>

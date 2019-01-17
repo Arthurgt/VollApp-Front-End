@@ -16,7 +16,6 @@
                   <tr>   
                     <th scope="col">Data</th>
                     <th scope="col">Czas</th>
-                    <th scope="col">Miejsce</th>
                     <th scope="col">Adres</th>
                     <th scope="col">Status</th>
                     <th scope="col">Gospodarz</th>
@@ -27,18 +26,19 @@
                     <tr *ngFor = "let match of matches">       
                       <td>{{match.date}}</td>
                       <td>{{match.hour}}:{{match.minute}}</td>
-                      <td>{{match.court}}</td>
                       <td>{{match.city}} ul.{{match.street}} {{match.nr}}</td>
                       <td *ngIf="match.status === 'ACTIVE'">Oczekuje rywala</td>
                       <td *ngIf="match.status === 'READY'">Wkrótce mecz!</td>
                       <td *ngIf="match.status === 'REJECTED'">Anulowany</td>
-                      <td *ngIf="match.status === 'REJECTED'">Rozegrany</td>
-                      <td>{{match.team1.name}}</td>
-                      <td>{{match.team2.name}}</td>
+                      <td *ngIf="match.status === 'PLAYED'">Rozegrany</td>
+                      <td *ngIf="match.team1">{{match.team1.name}}</td>
+                      <td *ngIf="!match.team1">BRAK</td>
+                      <td *ngIf="match.team2">{{match.team2.name}}</td>
+                      <td *ngIf="!match.team2">BRAK</td>
                     </tr>
                 </tbody>
               </table>
-              <button type="button" class="btn btn-primary" [routerLink]="['/calendar']"> Wróć </button>        
+              <button type="button" class="btn btn-primary" (click)="show()"> Pokaż </button> <button type="button" class="btn btn-primary" [routerLink]="['/calendar']"> Wróć </button>        
       </div>
     </div>
   </div>

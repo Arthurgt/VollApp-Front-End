@@ -33,6 +33,7 @@ import { OperationComponent } from './match/operation.component';
 import { PlayRequestsComponent } from './calendar/playrequests.component';
 import { CalendarRefreshComponent } from './calendar/calendarrefresh.component';
 import { SchedulerComponent } from './calendar/scheduler.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { SchedulerComponent } from './calendar/scheduler.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [UserService,AuthGuard,LoginAuthService,TeamService,MatchService],
   bootstrap: [AppComponent]
