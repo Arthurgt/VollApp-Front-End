@@ -3,6 +3,6 @@ Web application for volleyball lovers. Using this application we can create our 
 
 Created with Angular 7.
 
-![alt text](https://raw.githubusercontent.com/Arthurgt/VollApp/master/Others/image1.png)
-![alt text](https://raw.githubusercontent.com/Arthurgt/VollApp/master/Others/image2.png)
-![alt text](https://raw.githubusercontent.com/Arthurgt/VollApp/master/Others/image3.png)
+![alt text](https://raw.githubusercontent.com/Arthurgt/VollApp-Frontend/master/Others/image1.png)
+![alt text](https://raw.githubusercontent.com/Arthurgt/VollApp-Frontend/master/Others/image2.png)
+![alt text](https://raw.githubusercontent.com/Arthurgt/VollApp-Frontend/master/Others/image3.png)
